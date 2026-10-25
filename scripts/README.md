@@ -1,0 +1,1 @@
+Script optimize_models.py là công cụ chuẩn bị asset, không cần chạy để dùng app. Nó yêu cầu bản GLB nguồn candidate-dog.glb, candidate-elephant-original.glb, candidate-lion.glb và candidate-giraffe.glb tại thư mục làm việc; nguồn và giấy phép nằm trong dist/assets/model-sources.json. Cần Python, Pillow. App và Vercel dùng trực tiếp các file đã chuẩn bị trong dist/assets/models.

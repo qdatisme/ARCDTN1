@@ -1,0 +1,1 @@
+Đây là phép kiểm thử bằng ảnh tĩnh, không phải demo camera. Để lặp lại, sao chép qa-360-scan.html và qa-360-scan.js vào dist, phục vụ qua localhost rồi mở trang đó. Trang có nhãn KIỂM THỬ ẢNH TĨNH. Kiểm tra zoom và liên kết 360°; không dùng ảnh tĩnh làm bằng chứng camera tương tác trong báo cáo.

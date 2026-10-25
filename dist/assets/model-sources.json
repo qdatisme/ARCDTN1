@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cat",
+    "title": "Bicolor Cat",
+    "author": "kenchoo",
+    "source": "https://sketchfab.com/3d-models/e623a618ca344a8393d7ba4d63ec23cf",
+    "license": {
+      "name": "CC Attribution",
+      "url": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "mirror": "https://github.com/code4fukui/vr-cats",
+    "changes": "Giữ mô hình gốc bản 03; chuẩn hóa vị trí hiển thị."
+  },
+  {
+    "name": "dog",
+    "title": "dog :] gltf",
+    "author": "Godrex",
+    "source": "https://sketchfab.com/3d-models/e8e5140e4ca04b7f98b9f747ad94914e",
+    "license": {
+      "name": "CC Attribution",
+      "url": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "mirror": "https://github.com/Edgardcai/pet-avatar",
+    "changes": "Giảm ảnh texture tối đa 1536 px, đổi ảnh không alpha sang JPEG, bỏ clip hoạt ảnh không dùng và buffer không còn tham chiếu. Chuyển vật liệu specular-glossiness sang metallic-roughness gần đúng để trình duyệt hỗ trợ."
+  },
+  {
+    "name": "elephant",
+    "title": "Elephant in the Rotunda",
+    "author": "Abby Gancz",
+    "source": "https://sketchfab.com/3d-models/26ee59c981964681bf9f4e5eae2a3a26",
+    "license": {
+      "name": "CC Attribution",
+      "url": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "mirror": "https://github.com/crisleyhguimaraes/space-ship",
+    "changes": "Giảm ảnh texture tối đa 1536 px, đổi ảnh không alpha sang JPEG, bỏ clip hoạt ảnh không dùng và buffer không còn tham chiếu. "
+  },
+  {
+    "name": "lion",
+    "title": "Lion",
+    "author": "kenchoo",
+    "source": "https://sketchfab.com/3d-models/61d687ca92dc4cafbd5e74e3be40d49d",
+    "license": {
+      "name": "CC Attribution-NonCommercial-ShareAlike",
+      "url": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "mirror": "https://github.com/code4fukui/vr-cats",
+    "changes": "Giảm ảnh texture tối đa 1536 px, đổi ảnh không alpha sang JPEG, bỏ clip hoạt ảnh không dùng và buffer không còn tham chiếu. "
+  },
+  {
+    "name": "giraffe",
+    "title": "Giraffe",
+    "author": "BlueMesh",
+    "source": "https://sketchfab.com/3d-models/522c042aad9f4348a74c2985ec3f99f9",
+    "license": {
+      "name": "CC Attribution",
+      "url": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "mirror": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-118/522c042aad9f4348a74c2985ec3f99f9.glb",
+    "changes": "Giảm ảnh texture tối đa 1536 px, đổi ảnh không alpha sang JPEG, bỏ clip hoạt ảnh không dùng và buffer không còn tham chiếu.  Bỏ mặt đế Circle để xem được mặt dưới. Đặt vật liệu da/lông về phi kim (metallic=0) để tránh đen khi không có bản đồ môi trường."
+  }
+]

@@ -1,0 +1,72 @@
+window.ANIMALS = [
+  {
+    "id": 1,
+    "key": "cat",
+    "name": "Mèo nhà",
+    "latin": "Felis catus",
+    "icon": "🐈",
+    "model": "assets/models/cat.glb?v=04",
+    "thumb": "assets/thumbs/cat.jpg",
+    "audio": "assets/audio/cat.wav",
+    "intro": "Mèo nhà là động vật có vú, có thính giác nhạy, móng vuốt có thể thu lại và bộ ria giúp cảm nhận không gian.",
+    "habitat": "Sống cùng con người trong nhà, sân vườn và khu dân cư.",
+    "soundNote": "Bản ghi mèo kêu, không phải âm tổng hợp.",
+    "modelYaw": 35
+  },
+  {
+    "id": 2,
+    "key": "dog",
+    "name": "Chó nhà",
+    "latin": "Canis lupus familiaris",
+    "icon": "🐕",
+    "model": "assets/models/dog.glb?v=04",
+    "thumb": "assets/thumbs/dog.jpg",
+    "audio": "assets/audio/dog.wav",
+    "intro": "Chó nhà có khứu giác nhạy, giao tiếp bằng âm thanh và ngôn ngữ cơ thể, thường sống gần con người.",
+    "habitat": "Nhà ở, sân vườn, trang trại và khu dân cư.",
+    "soundNote": "Bản ghi chó sủa.",
+    "modelYaw": 35
+  },
+  {
+    "id": 3,
+    "key": "elephant",
+    "name": "Voi châu Phi",
+    "latin": "Loxodonta africana",
+    "icon": "🐘",
+    "model": "assets/models/elephant.glb?v=04",
+    "thumb": "assets/thumbs/elephant.jpg",
+    "audio": "assets/audio/elephant.wav",
+    "intro": "Voi châu Phi có tai lớn, vòi linh hoạt và thường sống theo nhóm gia đình. Chúng dùng vòi để lấy thức ăn, uống nước và giao tiếp.",
+    "habitat": "Đồng cỏ savan, rừng thưa và vùng cây bụi ở châu Phi.",
+    "soundNote": "Âm thanh minh họa họ voi: bản ghi nguồn là voi châu Á, không khẳng định là tiếng của loài trong mô hình.",
+    "modelYaw": 35
+  },
+  {
+    "id": 4,
+    "key": "lion",
+    "name": "Sư tử",
+    "latin": "Panthera leo",
+    "icon": "🦁",
+    "model": "assets/models/lion.glb?v=04",
+    "thumb": "assets/thumbs/lion.jpg",
+    "audio": "assets/audio/lion.wav",
+    "intro": "Sư tử là thú ăn thịt thường sống theo bầy. Con đực trưởng thành có bờm, còn sư tử cái thường phối hợp săn mồi.",
+    "habitat": "Đồng cỏ savan và rừng thưa, chủ yếu ở châu Phi.",
+    "soundNote": "Bản ghi sư tử đực gầm trong điều kiện nuôi nhốt.",
+    "modelYaw": 215
+  },
+  {
+    "id": 5,
+    "key": "giraffe",
+    "name": "Hươu cao cổ",
+    "latin": "Giraffa spp.",
+    "icon": "🦒",
+    "model": "assets/models/giraffe.glb?v=04",
+    "thumb": "assets/thumbs/giraffe.jpg",
+    "audio": "assets/audio/giraffe.wav",
+    "intro": "Hươu cao cổ có cổ và chân dài, giúp tiếp cận lá cây ở trên cao. Mỗi con có hoa văn đốm riêng.",
+    "habitat": "Đồng cỏ có cây và rừng thưa ở châu Phi.",
+    "soundNote": "Bản ghi tiếng ngân trầm ban đêm của hươu cao cổ; nên dùng tai nghe nếu khó nghe.",
+    "modelYaw": 215
+  }
+];

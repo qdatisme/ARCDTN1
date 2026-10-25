@@ -1,0 +1,52 @@
+[
+  {
+    "animal": "cat",
+    "title": "File:Meow of a pleading cat.oga",
+    "source": "https://commons.wikimedia.org/wiki/File:Meow_of_a_pleading_cat.oga",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meow_of_a_pleading_cat.oga",
+    "author": "Heismark",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "description": "Cat asking to get out."
+  },
+  {
+    "animal": "elephant",
+    "title": "File:Elephant voice - trumpeting.ogg",
+    "source": "https://commons.wikimedia.org/wiki/File:Elephant_voice_-_trumpeting.ogg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Elephant_voice_-_trumpeting.ogg",
+    "author": "தகவலுழவன்",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "description": "Elephant_voice_-_trumpeting. தமிழ்: யானையின் பிளிறல்"
+  },
+  {
+    "animal": "giraffe",
+    "title": "File:Giraffe Hum.oga",
+    "source": "https://commons.wikimedia.org/wiki/File:Giraffe_Hum.oga",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Giraffe_Hum.oga",
+    "author": "Anton Baotic, Florian Sicks and Angela S. Stoeger",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Giraffe humming. It was recorded at the Berlin Tierpark or Copenhagen Zoo or Vienna Zoo; the source (see external links below) does not specify at which of the three zoos this recording was made. Nor does it mention if it was made by a male or female giraffe. Its spectrogram &amp; waveform (top left, labelled \"a\")."
+  },
+  {
+    "animal": "dog",
+    "title": "File:Barking of a dog 2.ogg",
+    "source": "https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Barking_of_a_dog_2.ogg",
+    "author": "Amada44",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "Barking of a dog"
+  },
+  {
+    "animal": "lion",
+    "title": "File:Lion raring-sound1TamilNadu178.ogg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lion_raring-sound1TamilNadu178.ogg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Lion_raring-sound1TamilNadu178.ogg",
+    "author": "த*உழவன்",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "description": "the roaring of a lion in captivity தமிழ்: விலங்கியல் பூங்காவிலுள்ள, ஆண் சிங்கத்தின் குரல்.ஒலி சீரமைப்புச் செய்யப்பட்டது."
+  }
+]

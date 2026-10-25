@@ -1,0 +1,7 @@
+.git
+.vercel
+node_modules
+__pycache__
+tests
+scripts
+*.zip
