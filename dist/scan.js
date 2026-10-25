@@ -63,19 +63,29 @@ try {
   if (!isSecureContext) throw Error('Camera cần HTTPS hoặc localhost. Trên iPhone, hãy mở ứng dụng bằng địa chỉ HTTPS.');
   // AR.js 3.4.7 exposes registered patterns here. Wait for the full database
   // before accepting any match; otherwise the first loaded pattern can win briefly.
-  const visibleSince = new Map();
+  const samples = new Map();
+  let lastProcessedAt = null;
   AFRAME.registerComponent('animal-selection', {
     tick: function () {
       const context = this.el.systems.arjs?._arSession?.arContext;
       const controller = context?.arController;
       if (Object.keys(controller?.patternMarkers || {}).filter(k => Number(k) >= 0).length < window.ANIMALS.length) return;
+      // Count detector frames, not render ticks (the same result can span ticks).
+      if (context._updatedAt == null || context._updatedAt === lastProcessedAt) return;
+      lastProcessedAt = context._updatedAt;
       const now = performance.now();
       for (const [id, marker] of markers) {
         const raw = context._arMarkersControls.find(c => c.parameters.patternUrl?.endsWith('/' + id + '.patt'));
+        const previous = samples.get(id);
         if (raw?.object3d.visible) {
-          if (!visibleSince.has(id)) visibleSince.set(id, now);
-          if (now - visibleSince.get(id) >= 180) known.add(id);
-        } else { visibleSince.delete(id); known.delete(id); }
+          // Confirm twice within 200 ms; a single missed frame need not restart acquisition.
+          const hits = previous && now - previous.lastSeen <= 200 ? previous.hits + 1 : 1;
+          samples.set(id, {lastSeen: now, hits});
+          if (hits >= 2) known.add(id);
+        } else if (previous && now - previous.lastSeen > 250) {
+          samples.delete(id);
+          known.delete(id);
+        }
       }
       chooseActive();
     }
@@ -86,7 +96,7 @@ try {
   scene.setAttribute('xr-mode-ui', 'enabled: false');
   scene.setAttribute('vr-mode-ui', 'enabled: false');
   scene.setAttribute('renderer', 'alpha: true; antialias: true; colorManagement: true');
-  scene.setAttribute('arjs', 'sourceType: webcam; debugUIEnabled: false; detectionMode: mono; cameraParametersUrl: vendor/camera_para.dat;');
+  scene.setAttribute('arjs', 'sourceType: webcam; debugUIEnabled: false; detectionMode: mono; sourceWidth: 1280; sourceHeight: 960; canvasWidth: 640; canvasHeight: 480; maxDetectionRate: 30; cameraParametersUrl: vendor/camera_para.dat;');
   for (const a of window.ANIMALS) {
     const marker = document.createElement('a-marker');
     marker.setAttribute('type', 'pattern');
@@ -94,7 +104,7 @@ try {
     marker.setAttribute('size', '0.1');
     marker.setAttribute('emitevents', 'true');
     marker.setAttribute('smooth', 'true');
-    marker.setAttribute('min-confidence', '0.8');
+    marker.setAttribute('min-confidence', '0.75');
     const holder = document.createElement('a-entity');
     holder.id = 'animal-model-' + a.id;
     const model = document.createElement('a-entity');
