@@ -117,7 +117,10 @@ try {
     marker.setAttribute('smooth', 'true');
     marker.setAttribute('min-confidence', '0.75');
     const holder = document.createElement('a-entity');
-    holder.id = 'animal-model-' + a.id;
+    holder.id = 'animal-anchor-' + a.id;
+    // Tracking owns the outer anchor; gestures own this independent child.
+    const interaction = document.createElement('a-entity');
+    interaction.id = 'animal-model-' + a.id;
     const model = document.createElement('a-entity');
     model.dataset.animalId = String(a.id); model.setAttribute('rotation', '0 ' + (a.modelYaw || 35) + ' 0');
     model.setAttribute('fit-animal', 'size: 1.0');
@@ -125,7 +128,8 @@ try {
     model.addEventListener('model-error', () => { failures.add(a.id); refreshModelState(); });
     model.addEventListener('animal-ready', () => { failures.delete(a.id); refreshModelState(); });
     holder.object3D.visible = false;
-    holder.append(model); scene.append(marker); scene.append(holder);
+    interaction.append(model); holder.append(interaction);
+    scene.append(marker); scene.append(holder);
     markers.set(a.id, marker); holders.set(a.id, holder);
   }
   const camera = document.createElement('a-entity');camera.setAttribute('camera', '');scene.append(camera);
