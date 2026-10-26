@@ -1,5 +1,6 @@
 const $ = s => document.querySelector(s);
 let activeId = null, cameraReady = false, audio = null, soundGeneration = 0;
+const TRACKING_HOLD_MS = 3000;
 const known = new Set(), markers = new Map(), holders = new Map(), failures = new Set();
 const animalById = id => window.ANIMALS.find(a => a.id === id);
 function stopSound() {
@@ -13,9 +14,10 @@ function refreshModelState() {
   const ready = holder?.querySelector('[gltf-model]')?.dataset.ready === 'true';
   $('#hint').textContent = failures.has(activeId) ? 'Không tải được mô hình. Kiểm tra file GLB trong thư mục assets/models rồi tải lại trang.' : ready ? 'Đã nhận thẻ ' + a.id + '. Khi đổi thẻ, đưa thẻ cũ ra khỏi hình khoảng 1 giây.' : 'Đã nhận thẻ ' + a.id + ' · Đang tải mô hình…';
 }
-function chooseActive() {
+function chooseActive(visibleIds = known) {
   // Keep the current animal stable when several markers are visible.
-  const next = known.has(activeId) ? activeId : (known.values().next().value ?? null);
+  const next = visibleIds.has(activeId) ? activeId :
+    (visibleIds.values().next().value ?? (known.has(activeId) ? activeId : null));
   if (next === activeId) return;
   stopSound();
   activeId = next;
@@ -74,6 +76,7 @@ try {
       if (context._updatedAt == null || context._updatedAt === lastProcessedAt) return;
       lastProcessedAt = context._updatedAt;
       const now = performance.now();
+      const visibleIds = new Set();
       for (const [id, marker] of markers) {
         const raw = context._arMarkersControls.find(c => c.parameters.patternUrl?.endsWith('/' + id + '.patt'));
         const previous = samples.get(id);
@@ -82,12 +85,20 @@ try {
           const hits = previous && now - previous.lastSeen <= 200 ? previous.hits + 1 : 1;
           samples.set(id, {lastSeen: now, hits});
           if (hits >= 2) known.add(id);
-        } else if (previous && now - previous.lastSeen > 250) {
+          if (known.has(id)) {
+            visibleIds.add(id);
+            // Models are scene children so AR.js cannot hide them on a missed frame.
+            // Copy only the anchor transform; model rotation/zoom stays on its child.
+            marker.object3D.updateWorldMatrix(true, false);
+            const holder = holders.get(id).object3D;
+            marker.object3D.matrixWorld.decompose(holder.position, holder.quaternion, holder.scale);
+          }
+        } else if (previous && now - previous.lastSeen > TRACKING_HOLD_MS) {
           samples.delete(id);
           known.delete(id);
         }
       }
-      chooseActive();
+      chooseActive(visibleIds);
     }
   });
   const scene = document.createElement('a-scene');
@@ -113,7 +124,8 @@ try {
     model.dataset.modelSource = a.model;
     model.addEventListener('model-error', () => { failures.add(a.id); refreshModelState(); });
     model.addEventListener('animal-ready', () => { failures.delete(a.id); refreshModelState(); });
-    holder.append(model); marker.append(holder); scene.append(marker);
+    holder.object3D.visible = false;
+    holder.append(model); scene.append(marker); scene.append(holder);
     markers.set(a.id, marker); holders.set(a.id, holder);
   }
   const camera = document.createElement('a-entity');camera.setAttribute('camera', '');scene.append(camera);
